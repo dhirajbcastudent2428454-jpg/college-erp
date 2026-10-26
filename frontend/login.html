@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in · College ERP</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body class="auth-page">
+  <main class="auth-layout">
+    <section class="auth-intro">
+      <p class="eyebrow">COLLEGE OPERATIONS DESK</p>
+      <h1>One calm place for every academic record.</h1>
+      <p>Sign in to review your authorized worklist, approvals and campus activity.</p>
+      <div class="intro-rule"></div>
+      <p class="muted">Secure access • Audited actions • Permission-aware workspace</p>
+    </section>
+    <section class="auth-card" aria-labelledby="login-title">
+      <div class="brand-lockup"><span class="brand-dot">●</span><span>College ERP</span></div>
+      <h2 id="login-title">Sign in</h2>
+      <p class="muted">Use your college email or assigned ID.</p>
+      <form id="login-form" novalidate>
+        <label for="identifier">Email, username or college ID</label>
+        <input id="identifier" name="identifier" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="button button-primary button-wide" type="submit">Continue securely</button>
+        <p id="form-message" class="form-message" role="alert"></p>
+      </form>
+      <p class="demo-note">Development demo accounts are documented in README. Production OTP delivery is never bypassed.</p>
+    </section>
+  </main>
+  <script type="module" src="/assets/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: College ERP API
+  version: 0.1.0
+  description: Versioned API foundation; module contracts are added with each delivery slice.
+servers:
+  - url: /api/v1
+paths:
+  /health:
+    get:
+      summary: Service health
+      responses:
+        '200': { description: Healthy service }
+  /ready:
+    get:
+      summary: Readiness
+      responses:
+        '200': { description: Ready }
+        '503': { description: Dependency unavailable }
+  /auth/login:
+    post:
+      summary: Verify password and issue a purpose-bound OTP challenge
+      responses:
+        '200': { description: OTP challenge created }
+        '401': { description: Generic invalid credentials }
+  /auth/otp/verify:
+    post:
+      summary: Consume an OTP challenge and establish a secure session
+      responses:
+        '200': { description: Session established }
+        '401': { description: Invalid, expired or replayed code }
+  /auth/refresh:
+    post:
+      summary: Rotate the refresh session
+      responses:
+        '200': { description: Session rotated }
+        '401': { description: Session invalid }
+  /auth/logout:
+    post:
+      summary: Revoke the current session
+      responses:
+        '200': { description: Signed out }
+  /auth/me:
+    get:
+      summary: Current authorized user
+      responses:
+        '200': { description: Authorized user }
+        '401': { description: Authentication required }
+  /dashboard/summary:
+    get:
+      summary: Permission-filtered dashboard summary
+      responses:
+        '200': { description: Summary returned }
+        '403': { description: Permission denied }
+  /students:
+    get:
+      summary: Search and paginate authorized student records
+      responses:
+        '200': { description: Student page returned }
+        '403': { description: Permission denied }
+    post:
+      summary: Create a student when students:manage is granted
+      responses:
+        '201': { description: Student created }
+        '409': { description: Duplicate enrollment number }
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: erp_access_token

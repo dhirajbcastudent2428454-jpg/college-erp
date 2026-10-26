@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify access · College ERP</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body class="auth-page">
+  <main class="auth-layout auth-layout-compact">
+    <section class="auth-intro">
+      <p class="eyebrow">SECURE CHECKPOINT</p>
+      <h1>Confirm it is really you.</h1>
+      <p>A one-time code protects sign-in and sensitive campus records.</p>
+    </section>
+    <section class="auth-card" aria-labelledby="otp-title">
+      <div class="brand-lockup"><span class="brand-dot">●</span><span>College ERP</span></div>
+      <h2 id="otp-title">Verify OTP</h2>
+      <p class="muted">Enter the six-digit code sent through the configured development or delivery adapter.</p>
+      <form id="otp-form" novalidate>
+        <label for="otp">One-time password</label>
+        <input id="otp" name="otp" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required>
+        <button class="button button-primary button-wide" type="submit">Verify and enter</button>
+        <button class="button button-quiet button-wide" id="resend" type="button">Resend code</button>
+        <p id="otp-message" class="form-message" role="alert"></p>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="/assets/js/verify-otp.js"></script>
+</body>
+</html>
