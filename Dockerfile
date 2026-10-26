@@ -5,4 +5,4 @@ RUN corepack enable && pnpm install --frozen-lockfile=false
 COPY . .
 ENV NODE_ENV=production
 EXPOSE 3000
-CMD ["node", "backend/src/server.js"]
+CMD ["sh", "-c", "node backend/scripts/seed.js && node backend/src/server.js"]

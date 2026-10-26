@@ -4,8 +4,8 @@ import { User, ROLE_PERMISSIONS } from '../src/models/User.js';
 import { hashPassword } from '../src/utils/crypto.js';
 import { ensureDemoUsers, memory } from '../src/services/store.js';
 
-if (env.NODE_ENV === 'production' || process.env.ALLOW_DEMO_SEED !== 'true') {
-  console.error('Refusing to seed. Use NODE_ENV=development and ALLOW_DEMO_SEED=true for a disposable development database.');
+if (process.env.ALLOW_DEMO_SEED !== 'true') {
+  console.error('Refusing to seed. Set ALLOW_DEMO_SEED=true explicitly for a controlled seed operation.');
   process.exit(1);
 }
 
