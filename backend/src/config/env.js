@@ -25,7 +25,8 @@ if (!parsed.success) {
 
 export const env = parsed.data;
 export const isProduction = env.NODE_ENV === 'production';
-export const isDevelopmentDemo = env.NODE_ENV === 'development' && env.DEMO_AUTH_ENABLED;
+// Demo OTP behavior is opt-in through DEMO_AUTH_ENABLED. Keep it false in normal production.
+export const isDevelopmentDemo = env.DEMO_AUTH_ENABLED;
 
 if (isProduction && !process.env.MONGODB_URI) {
   console.error('MONGODB_URI is required in production. Refusing to start without a database.');
